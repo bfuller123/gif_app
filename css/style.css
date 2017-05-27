@@ -1,0 +1,33 @@
+/*Color Palette*/
+/*#1F253D -- dark gray w/purplish overtone*/
+/*#394264 -- light gray with purplish overtone*/
+/*#11A8AB -- teal*/
+/*#E64C65 -- pink*/
+/*#927FBF -- purple*/
+/*#ffffff -- white*/
+
+body {
+  font-family: 'Syncopate', 'Helvetica', 'Arial', sans-serif;
+}
+
+h1 {
+  font-family: 'Fredoka One', 'Helvetica', 'Arial', sans-serif;
+  color: #E64C65 !important;
+}
+
+.underline {
+  border-bottom: 4px solid #ffffff;
+}
+
+.btn-primary {
+  background-color: #11A8AB;
+}
+
+.brand {
+  width: 66%;
+  text-align: center;
+  margin: 5% 15%;
+  transition: all 1s linear;
+  padding-top: 5px;
+  background-color: #1F253D;
+}
