@@ -9,7 +9,7 @@ function moveBrand(){
   $('.brand').css('border-radius', '0');
   $('h1').css('font-size', '42px');
   $('.brand').css('padding-top', '.8%');
-  setTimeout(changeButtonArea, 500);
+  setTimeout(changeButtonArea, 1000); //after the begin button slowly has faded it fades in the new element by getting rid of the begin button
 }
 
 function changeButtonArea(){
