@@ -15,6 +15,10 @@ h1 {
   color: #E64C65 !important;
 }
 
+/*.fullHeight {
+  height: 100vh;
+}*/
+
 .underline {
   border-bottom: 4px solid #ffffff;
   border-top: 4px solid #ffffff;
@@ -22,7 +26,14 @@ h1 {
 
 .btn-primary, #begin {
   background-color: #11A8AB;
+  border: 1px solid #11A8AB;
   transition: all 1s linear;
+}
+
+.btn-success, .btn-success:hover {
+  background-color: #927FBF;
+  border: 1px solid #927FBF;
+  margin: 4px;
 }
 
 .addButton {
@@ -39,10 +50,20 @@ input {
   to {opacity: 1;}
 }
 
+@keyframes fullHeight {
+  from {height: 30vh;}
+  to {height: 100vh;}
+}
+
 .brand {
   width: 66%;
   text-align: center;
   margin: 5% 15%;
   transition: all 1s linear;
   background-color: #1F253D;
+}
+
+.gifArea {
+  height: 100vh;
+  background-color: #394264;
 }
