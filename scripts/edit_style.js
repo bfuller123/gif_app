@@ -3,7 +3,7 @@
 $(document).on('click', '.btn-lg', moveBrand);
 
 function moveBrand(){
-  var button = $('#begin')
+  var button = $('#begin');
   button.css('opacity', '0');
   button.attr('disabled', 'true');
   $('.brand').css('width', '25%');
@@ -20,7 +20,7 @@ function moveBrand(){
 function changeButtonArea(){
   $('.buttonArea').html('<input class="addButton" id="searchTerm"></input><button class="btn btn-primary addButton addTag">Add</button>');
   $('.addButton').css('animation', 'fadeIn 2s');
-  $('.buttonArea').append('<hr><br><div class="tagArea"></div>')
+  $('.buttonArea').append('<hr><br><div class="tagArea"></div>');
   $('.brand').css('animation', 'fullHeight 1s');
   $('.brand').css('height', '100vh'); //need to add height of 100vh here so it stays full page
 }

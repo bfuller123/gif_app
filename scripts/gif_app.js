@@ -1,6 +1,6 @@
 var gifTagList = ['sponge bob', 'bugs bunny', 'arthur', 'calvin'];
 var searchUrl = 'http://api.giphy.com/v1/gifs/search?q=';
-var limit = '&limit=100'
+var limit = '&limit=100';
 var key = '&api_key=dc6zaTOxFJmzC';
 var gifsShowing = 0;
 var currentGifSet;
@@ -33,21 +33,26 @@ function searchGifs() {
   }).done(function(response) {
     console.log(response);
     currentGifSet = response;
-    for (var i = 0; i < 16; i++) {
-      $('.gifArea').append('<img class="gif" playing="stopped" src="' + response.data[i].images.downsized_still.url + '"></img>');
-      gifsShowing++;
-    }
-  })
+    renderGifs(currentGifSet);
+  });
   $('.gifArea').append('<button class="btn btn-warning more">More</button>');
+}
+
+function renderGifs(object) {
+  console.log(object);
+  var moreGifs = gifsShowing + 16;
+  for (var i = gifsShowing; i < moreGifs; i++) {
+    $('.gifArea').append('<img class="gif" playing="stopped" src="' + object.data[i].images.downsized_still.url + '"></img>');
+    gifsShowing++;
+    if (gifsShowing == 100) {
+      return;
+    }
+  }
 }
 
 function showMoreGifs() {
   $('.gifArea').empty();
-  var add16Gifs = gifsShowing + 16;
-  for (var i = gifsShowing; i < add16Gifs; i++) {
-    $('.gifArea').append('<img class="gif" playing="stopped" src="' + currentGifSet.data[i].images.downsized_still.url + '"></img>');
-    gifsShowing++;
-  }
+  renderGifs(currentGifSet);
   $('.gifArea').append('<button class="btn btn-warning more">More</button>');
 }
 
