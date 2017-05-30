@@ -32,6 +32,13 @@ h1 {
   margin: 4px;
 }
 
+.btn-warning, .btn-warning:hover {
+  background-color: #E64C65;
+  border: 1px solid #E64C65;
+  margin: 4px;
+  width: 8%;
+}
+
 .addButton {
   transition: all 1s linear;
 }
@@ -77,4 +84,8 @@ input {
   width: 30%;
   box-shadow: 5px 5px 2px #1F253D;
   transition: all .15s linear;
+}
+
+.navbar-fixed-bottom {
+  text-align: center;
 }

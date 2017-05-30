@@ -31,15 +31,13 @@ function searchGifs() {
     url: searchUrl + tagToSearch + limit + key,
     method: 'GET'
   }).done(function(response) {
-    console.log(response);
     currentGifSet = response;
     renderGifs(currentGifSet);
   });
-  addPageButtons();
 }
 
 function renderGifs(object) {
-  console.log(object);
+  $('.navbar-fixed-bottom').empty();
   var moreGifs = gifsShowing + 16;
   for (var i = gifsShowing; i < moreGifs; i++) {
     $('.gifArea').append('<img class="gif" playing="stopped" src="' + object.data[i].images.downsized_still.url + '"></img>');
@@ -48,19 +46,18 @@ function renderGifs(object) {
       return;
     }
   }
+  addPageButtons();
 }
 
 function showMoreGifs() {
   $('.gifArea').empty();
   renderGifs(currentGifSet);
-  addPageButtons();
 }
 
 function goBack() {
   gifsShowing = gifsShowing - 32;
   $('.gifArea').empty();
   renderGifs(currentGifSet);
-  addPageButtons();
 }
 
 function playGif(gif) {

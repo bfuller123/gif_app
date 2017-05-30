@@ -26,5 +26,12 @@ function changeButtonArea(){
 }
 
 function addPageButtons() {
-  $('.gifArea').append('<footer class="navbar-fixed-bottom"><button class="btn btn-warning backward"><</button><button class="btn btn-warning forward">></button></footer>');
+  $('.container-fluid').append('<div class="row navFoot">');
+  $('.navFoot').append('<footer class="navbar-fixed-bottom col-xs-12"></footer>');
+  if (gifsShowing > 17) {
+     $('.navbar-fixed-bottom').append('<button class="btn btn-warning backward"><</button>');
+  }
+  if (gifsShowing < 96) {
+    $('.navbar-fixed-bottom').append('<button class="btn btn-warning forward">></button>');
+  }
 }
