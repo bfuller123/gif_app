@@ -15,10 +15,6 @@ h1 {
   color: #E64C65 !important;
 }
 
-/*.fullHeight {
-  height: 100vh;
-}*/
-
 .underline {
   border-bottom: 4px solid #ffffff;
   border-top: 4px solid #ffffff;
@@ -66,17 +62,19 @@ input {
 .gifArea {
   height: 100vh;
   background-color: #394264;
+  overflow: hidden;
 }
 
 .gif {
   margin: 4px;
-  height: 100px;
-  width: 100px;
-  transition: all .5s linear;
+  height: 20%;
+  width: 20%;
+  transition: all .25s linear;
 }
 
 .gif:hover {
-  height: 400px;
-  width: 400px;
-  transition: all .5s linear;
+  height: 30%;
+  width: 30%;
+  box-shadow: 5px 5px 2px #1F253D;
+  transition: all .15s linear;
 }

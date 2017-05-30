@@ -1,6 +1,9 @@
 var gifTagList = ['sponge bob', 'bugs bunny', 'arthur', 'calvin'];
 var searchUrl = 'http://api.giphy.com/v1/gifs/search?q=';
+var limit = '&limit=100'
 var key = '&api_key=dc6zaTOxFJmzC';
+var gifsShowing = 0;
+var currentGifSet;
 
 function addNewTag() {
   $('.tagArea').empty();
@@ -21,20 +24,34 @@ function addButtons() {
 }
 
 function searchGifs() {
+  gifsShowing = 0;
   var tagToSearch = $(this).attr('to-search');
   $('.gifArea').empty();
   $.ajax({
-    url: searchUrl+tagToSearch+key,
+    url: searchUrl + tagToSearch + limit + key,
     method: 'GET'
-  }).done(function(response){
+  }).done(function(response) {
     console.log(response);
-    for (var i = 0; i < response.data.length; i++) {
-      $('.gifArea').append('<img class="gif" playing="stopped" src="'+response.data[i].images.fixed_height_small_still.url+'"></img>');
+    currentGifSet = response;
+    for (var i = 0; i < 16; i++) {
+      $('.gifArea').append('<img class="gif" playing="stopped" src="' + response.data[i].images.downsized_still.url + '"></img>');
+      gifsShowing++;
     }
   })
+  $('.gifArea').append('<button class="btn btn-warning more">More</button>');
 }
 
-function playGif(gif){
+function showMoreGifs() {
+  $('.gifArea').empty();
+  var add16Gifs = gifsShowing + 16;
+  for (var i = gifsShowing; i < add16Gifs; i++) {
+    $('.gifArea').append('<img class="gif" playing="stopped" src="' + currentGifSet.data[i].images.downsized_still.url + '"></img>');
+    gifsShowing++;
+  }
+  $('.gifArea').append('<button class="btn btn-warning more">More</button>');
+}
+
+function playGif(gif) {
   var source = $(gif).attr('src');
   var newSource = source.split('/');
   newSource.pop();
@@ -42,11 +59,11 @@ function playGif(gif){
   $(gif).attr('src', newSource);
 }
 
-function stopGif(gif){
+function stopGif(gif) {
   var source = $(gif).attr('src');
   var newSource = source.split('/');
   newSource.pop();
-  newSource = newSource.join('/') + '/100_s.gif';
+  newSource = newSource.join('/') + '/giphy-downsized_s.gif';
   $(gif).attr('src', newSource);
 }
 
@@ -56,8 +73,7 @@ function checkIfGifPlaying() {
   if (gifPlaying === 'stopped') {
     playGif(that);
     $(this).attr('playing', 'playing');
-  }
-  else {
+  } else {
     stopGif(that);
     $(this).attr('playing', 'stopped');
   }
@@ -66,5 +82,4 @@ function checkIfGifPlaying() {
 $(document).on('click', '.addTag', addNewTag);
 $(document).on('click', '.btn-success', searchGifs);
 $(document).on('click', '.gif', checkIfGifPlaying);
-// $(document).on('mouseenter', '.gif', playGif);
-// $(document).on('mouseleave', '.gif', stopGif);
+$(document).on('click', '.more', showMoreGifs);
