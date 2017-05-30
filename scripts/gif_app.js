@@ -1,5 +1,5 @@
 var gifTagList = ['sponge bob', 'gravity falls', 'arthur', 'calvin and hobbes'];
-var searchUrl = 'http://api.giphy.com/v1/gifs/search?q=';
+var searchUrl = 'https://api.giphy.com/v1/gifs/search?q=';
 var limit = '&limit=100';
 var key = '&api_key=dc6zaTOxFJmzC';
 var gifsShowing = 0;
