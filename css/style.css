@@ -70,4 +70,13 @@ input {
 
 .gif {
   margin: 4px;
+  height: 100px;
+  width: 100px;
+  transition: all .5s linear;
+}
+
+.gif:hover {
+  height: 400px;
+  width: 400px;
+  transition: all .5s linear;
 }

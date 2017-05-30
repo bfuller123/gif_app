@@ -29,30 +29,42 @@ function searchGifs() {
   }).done(function(response){
     console.log(response);
     for (var i = 0; i < response.data.length; i++) {
-      $('.gifArea').append('<img class="gif" src="'+response.data[i].images.fixed_height_small_still.url+'"></img>');
+      $('.gifArea').append('<img class="gif" playing="stopped" src="'+response.data[i].images.fixed_height_small_still.url+'"></img>');
     }
   })
 }
 
-function playGif(){
-  var source = $(this).attr('src');
+function playGif(gif){
+  var source = $(gif).attr('src');
   var newSource = source.split('/');
-  console.log(newSource);
   newSource.pop();
   newSource = newSource.join('/') + '/giphy.gif';
-  $(this).attr('src', newSource);
+  $(gif).attr('src', newSource);
 }
 
-function stopGif(){
-  var source = $(this).attr('src');
+function stopGif(gif){
+  var source = $(gif).attr('src');
   var newSource = source.split('/');
-  console.log(newSource);
   newSource.pop();
   newSource = newSource.join('/') + '/100_s.gif';
-  $(this).attr('src', newSource);
+  $(gif).attr('src', newSource);
+}
+
+function checkIfGifPlaying() {
+  var that = this;
+  var gifPlaying = $(this).attr('playing');
+  if (gifPlaying === 'stopped') {
+    playGif(that);
+    $(this).attr('playing', 'playing');
+  }
+  else {
+    stopGif(that);
+    $(this).attr('playing', 'stopped');
+  }
 }
 
 $(document).on('click', '.addTag', addNewTag);
 $(document).on('click', '.btn-success', searchGifs);
-$(document).on('mouseenter', '.gif', playGif);
-$(document).on('mouseleave', '.gif', stopGif);
+$(document).on('click', '.gif', checkIfGifPlaying);
+// $(document).on('mouseenter', '.gif', playGif);
+// $(document).on('mouseleave', '.gif', stopGif);
