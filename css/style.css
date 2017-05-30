@@ -67,3 +67,7 @@ input {
   height: 100vh;
   background-color: #394264;
 }
+
+.gif {
+  margin: 4px;
+}

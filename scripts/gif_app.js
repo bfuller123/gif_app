@@ -22,16 +22,37 @@ function addButtons() {
 
 function searchGifs() {
   var tagToSearch = $(this).attr('to-search');
+  $('.gifArea').empty();
   $.ajax({
     url: searchUrl+tagToSearch+key,
     method: 'GET'
   }).done(function(response){
     console.log(response);
     for (var i = 0; i < response.data.length; i++) {
-      $('.divArea').append('<img src="'+response.data[i]+'"></img>');
+      $('.gifArea').append('<img class="gif" src="'+response.data[i].images.fixed_height_small_still.url+'"></img>');
     }
   })
 }
 
+function playGif(){
+  var source = $(this).attr('src');
+  var newSource = source.split('/');
+  console.log(newSource);
+  newSource.pop();
+  newSource = newSource.join('/') + '/giphy.gif';
+  $(this).attr('src', newSource);
+}
+
+function stopGif(){
+  var source = $(this).attr('src');
+  var newSource = source.split('/');
+  console.log(newSource);
+  newSource.pop();
+  newSource = newSource.join('/') + '/100_s.gif';
+  $(this).attr('src', newSource);
+}
+
 $(document).on('click', '.addTag', addNewTag);
 $(document).on('click', '.btn-success', searchGifs);
+$(document).on('mouseenter', '.gif', playGif);
+$(document).on('mouseleave', '.gif', stopGif);
