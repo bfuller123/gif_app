@@ -35,7 +35,7 @@ function searchGifs() {
     currentGifSet = response;
     renderGifs(currentGifSet);
   });
-  $('.gifArea').append('<button class="btn btn-warning more">More</button>');
+  addPageButtons();
 }
 
 function renderGifs(object) {
@@ -53,7 +53,14 @@ function renderGifs(object) {
 function showMoreGifs() {
   $('.gifArea').empty();
   renderGifs(currentGifSet);
-  $('.gifArea').append('<button class="btn btn-warning more">More</button>');
+  addPageButtons();
+}
+
+function goBack() {
+  gifsShowing = gifsShowing - 32;
+  $('.gifArea').empty();
+  renderGifs(currentGifSet);
+  addPageButtons();
 }
 
 function playGif(gif) {
@@ -87,4 +94,5 @@ function checkIfGifPlaying() {
 $(document).on('click', '.addTag', addNewTag);
 $(document).on('click', '.btn-success', searchGifs);
 $(document).on('click', '.gif', checkIfGifPlaying);
-$(document).on('click', '.more', showMoreGifs);
+$(document).on('click', '.forward', showMoreGifs);
+$(document).on('click', '.backward', goBack);

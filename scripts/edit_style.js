@@ -24,3 +24,7 @@ function changeButtonArea(){
   $('.brand').css('animation', 'fullHeight 1s');
   $('.brand').css('height', '100vh'); //need to add height of 100vh here so it stays full page
 }
+
+function addPageButtons() {
+  $('.gifArea').append('<footer class="navbar-fixed-bottom"><button class="btn btn-warning backward"><</button><button class="btn btn-warning forward">></button></footer>');
+}
